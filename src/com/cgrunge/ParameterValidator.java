@@ -1,4 +1,4 @@
-//ParameterValidator - A standard method to validate those parms they passed you.
+//ParameterValidator - standard validation for method parameters
 //Copyright (C) 2016  Chuck Runge
 //Lombard, IL.
 //CGRunge001@GMail.com
@@ -15,7 +15,17 @@
 
 //You should have received a copy of the GNU General Public License
 //along with this program; if not, write to the Free Software
-//Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.package com.cgrunge;
+//Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+
+package com.cgrunge;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 public class ParameterValidator {
 
@@ -24,7 +34,7 @@ public class ParameterValidator {
 	/*
 	 * generic validation routine for method parameters 
 	 */
-	int parameterCheck(Object[] value) {
+	public int parameterCheck(Object[] value) {
 		
 		int retVal= 0;
 		String type = null;
@@ -57,7 +67,7 @@ public class ParameterValidator {
 	/*
 	 * check one object against it's type
 	 */
-	int objectCheck(String classIn, Object obj) {
+	public int objectCheck(String classIn, Object obj) {
 		int retVal = 1;
 		String classNameSz = null;
 		if(classIn == null || obj == null) {
@@ -87,6 +97,23 @@ public class ParameterValidator {
 		}
 		
 	}
+	
+	public boolean isStringEmpty(String sz) {
+		return StringUtils.isEmpty(sz);
+	}
+	public boolean isArrayEmpty(Object[] obj) {
+		return ArrayUtils.isEmpty(obj);
+	}
+	public boolean isListEmpty(List<Object> obj) {
+		return obj.equals(Collections.<Object>emptyList());
+	}
+	public boolean isSetEmpty(Set<Object> obj) {
+		return obj.equals(Collections.<Object>emptySet());
+	}
+	public boolean isMapEmpty(Map<Object, Object> obj) {
+		return obj.equals(Collections.<Object,Object>emptyMap());
+	}
+	
 	
 	void console(int i, Object obj, String type) {
 
